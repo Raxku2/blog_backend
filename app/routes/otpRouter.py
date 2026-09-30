@@ -20,19 +20,19 @@ def request_new_otp(phone_no: str):
     for a in range(6):
         otp += choice("0123456789")
 
-    res = get(
-        "https://www.fast2sms.com/dev/whatsapp",
-        headers={"Authorization": getenv("F2S_API_KEY")},
-        params={
-            "message_id": "34621",
-            "phone_number_id": "1311520745373044",
-            "numbers": phone_no,
-            "variables_values": f"{otp}|{otp}",
-        },
-    )
+    # res = get(
+    #     "https://www.fast2sms.com/dev/whatsapp",
+    #     headers={"Authorization": getenv("F2S_API_KEY")},
+    #     params={
+    #         "message_id": "34621",
+    #         "phone_number_id": "1311520745373044",
+    #         "numbers": phone_no,
+    #         "variables_values": f"{otp}|{otp}",
+    #     },
+    # )
 
-    if res.status_code != 200:
-        return JSONResponse({}, status_code=status.HTTP_503_SERVICE_UNAVAILABLE)
+    # if res.status_code != 200:
+    #     return JSONResponse({}, status_code=status.HTTP_503_SERVICE_UNAVAILABLE)
 
     res = saveOtp(phone_no=phone_no, otp=otp)
 

@@ -8,6 +8,8 @@ client = MongoClient(getenv("MONGO_URI"))
 
 authDB = client["Authorization"]
 
+userDB = client["Users"]
+
 
 def test_db():
     try:
